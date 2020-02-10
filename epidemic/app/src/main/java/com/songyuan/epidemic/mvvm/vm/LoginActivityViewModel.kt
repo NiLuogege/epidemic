@@ -10,6 +10,8 @@ import com.songyuan.epidemic.base.mvvm.databanding.command.BindingCommand
 import com.songyuan.epidemic.mvvm.model.LoginInfo
 import com.songyuan.epidemic.mvvm.view.LoginActivity
 import com.songyuan.epidemic.net.observer.LiveDataObserver
+import com.songyuan.epidemic.utils.StringUtils
+import com.songyuan.epidemic.utils.ToastUtils
 import io.reactivex.functions.Consumer
 import rxhttp.wrapper.param.RxHttp
 
@@ -26,12 +28,24 @@ class LoginActivityViewModel(val activity: LoginActivity) : MvvmBaseViewModel() 
     val onLoginBtnClicked = MutableLiveData<View>()
 
     fun login(): MutableLiveData<RequestState<LoginInfo>> {
+        var name = name.get()
+        var pass = pass.get()
+        if (StringUtils.isEmpty(name)) {
+            ToastUtils.show("请输入用户名")
+            return MutableLiveData()
+        }
+
+        if (StringUtils.isEmpty(pass)) {
+            ToastUtils.show("请输入密码")
+            return MutableLiveData()
+        }
+
 
         val liveData = getLiveData<LoginInfo>()
 
         RxHttp.postForm("login")
-            .add("phone", name.get())
-            .add("password", pass.get())
+            .add("phone", name)
+            .add("password", pass)
             .asBaseResponse(LoginInfo::class.java)
             .lifeOnMain(this)
             .subscribe(LiveDataObserver(liveData))

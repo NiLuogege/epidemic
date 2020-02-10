@@ -18,5 +18,4 @@ open class MvvmBaseViewModel : ScopeViewModel(App.context) {
             liveData.value = RequestState.loading()
         return liveData
     }
-
 }

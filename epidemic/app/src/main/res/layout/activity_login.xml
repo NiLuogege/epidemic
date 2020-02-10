@@ -55,6 +55,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:hint="请输入密码"
+                    android:inputType="textPassword"
                     android:paddingLeft="@dimen/qb_px_8"
                     android:text="@={viewModel.pass}"
                     android:textColor="@color/primary_text"
