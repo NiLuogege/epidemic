@@ -21,13 +21,9 @@ class LoginActivityRep : BaseRepository() {
 
         val liveData = getLiveData<LoginInfo>()
 
-        RxHttp.postForm("maintenance/pic")
+        RxHttp.postForm("login")
             .asBaseResponse(LoginInfo::class.java)
-            .subscribe({ s ->
-                {
-                    LogUtil.e("s=" + s)
-                }
-            }, { error -> {} })
+            .subscribe({LogUtil.e("hhh= "+it.toString())})
 
         return liveData
     }
