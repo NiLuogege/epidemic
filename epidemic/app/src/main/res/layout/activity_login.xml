@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.songyuan.epidemic.mvvm.vm.LoginActivityViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/qb_px_15"
+            android:layout_marginRight="@dimen/qb_px_15"
+            android:layout_marginBottom="@dimen/qb_px_200"
+            android:background="@drawable/rl_login_bg_shape"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_48"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入账号"
+                android:paddingLeft="@dimen/qb_px_8"
+                android:text="@={viewModel.name}"
+                android:textColor="@color/primary_text"
+                android:textColorHint="#B0B0B0"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="#DDDDDD" />
+
+            <EditText
+                android:id="@+id/pass"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qb_px_48"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入密码"
+                android:paddingLeft="@dimen/qb_px_8"
+                android:text="@={viewModel.pass}"
+                android:textColor="@color/primary_text"
+                android:textColorHint="#B0B0B0"
+                android:textSize="14sp" />
+
+
+            <Button
+                android:id="@+id/login_btn_id"
+                style="?android:attr/borderlessButtonStyle"
+                onClickCommand1="@{viewModel.onLoginBtnClicked}"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/qb_px_44"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/qb_px_22"
+                android:layout_marginTop="@dimen/qb_px_40"
+                android:layout_marginRight="@dimen/qb_px_22"
+                android:background="@drawable/bg_round_red_4"
+                android:gravity="center"
+                android:text="登录"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>
