@@ -7,6 +7,7 @@ import com.rxjava.rxlife.RxLife
 import com.rxjava.rxlife.lifeOnMain
 import com.songyuan.epidemic.base.mvvm.RequestState
 import com.songyuan.epidemic.mvvm.model.LoginInfo
+import com.songyuan.epidemic.net.observer.LiveDataObserver
 import com.songyuan.epidemic.utils.LogUtil
 import rxhttp.RxHttpPlugins
 import rxhttp.wrapper.param.RxHttp
@@ -23,7 +24,7 @@ class LoginActivityRep : BaseRepository() {
 
         RxHttp.postForm("login")
             .asBaseResponse(LoginInfo::class.java)
-            .subscribe({LogUtil.e("hhh= "+it.toString())})
+            .subscribe(LiveDataObserver(liveData))
 
         return liveData
     }
