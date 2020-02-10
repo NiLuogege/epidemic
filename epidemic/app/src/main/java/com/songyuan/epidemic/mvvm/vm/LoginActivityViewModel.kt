@@ -18,6 +18,6 @@ class LoginActivityViewModel(val rep: LoginActivityRep) : MvvmBaseViewModel() {
 
 
     val onLoginBtnClicked = BindingCommand<View>(Consumer {
-        LogUtil.e("hhhh")
+        rep.login()
     })
 }
