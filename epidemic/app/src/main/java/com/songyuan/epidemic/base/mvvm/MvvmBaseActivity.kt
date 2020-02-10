@@ -2,7 +2,6 @@ package com.aihuishou.commonlib.base.mvvm
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
@@ -12,6 +11,7 @@ import com.songyuan.epidemic.base.mvvm.viewmodel.TitleLayoutViewModel
 import com.songyuan.epidemic.utils.LogUtil
 import com.songyuan.epidemic.BR
 import com.songyuan.epidemic.base.BaseActivity
+import com.songyuan.epidemic.net.ProgressHelper
 
 
 /**
@@ -112,7 +112,12 @@ abstract class MvvmBaseActivity<V : ViewDataBinding> : BaseActivity() {
      *  handleData(payPageInfo,false, success = {})
      *  handleData(payPageInfo,false,error = {},success = {})
      */
-    protected fun <T> handleData(liveData: LiveData<RequestState<T>>, showLoading: Boolean = true, error: (error: Throwable?) -> Unit = {}, success: (T) -> Unit) {
+    protected fun <T> handleData(
+        liveData: LiveData<RequestState<T>>,
+        showLoading: Boolean = true,
+        error: (error: Throwable?) -> Unit = {},
+        success: (T) -> Unit
+    ) {
         liveData.observe(this, Observer { result ->
             if (result != null) {
                 when {
@@ -138,29 +143,29 @@ abstract class MvvmBaseActivity<V : ViewDataBinding> : BaseActivity() {
     }
 
     protected fun showProgress() {
-//        try {
-//            if (progress == null) {
-//                progress = ProgressHelper.createProgress(this)
-//                progress?.setCancelable(progressCancelable)
-//                progress?.setCanceledOnTouchOutside(false)
-//            }
-//            if (progress?.isShowing!!) {
-//                progress?.dismiss()
-//            }
-//            progress?.show()
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
+        try {
+            if (progress == null) {
+                progress = ProgressHelper.createProgress(this)
+                progress?.setCancelable(progressCancelable)
+                progress?.setCanceledOnTouchOutside(false)
+            }
+            if (progress?.isShowing!!) {
+                progress?.dismiss()
+            }
+            progress?.show()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     protected fun dismissProgress() {
-//        try {
-//            if (progress != null) {
-//                progress?.dismiss()
-//            }
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//        }
+        try {
+            if (progress != null) {
+                progress?.dismiss()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 

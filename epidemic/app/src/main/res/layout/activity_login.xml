@@ -67,7 +67,7 @@
             <Button
                 android:id="@+id/login_btn_id"
                 style="?android:attr/borderlessButtonStyle"
-                onClickCommand1="@{viewModel.onLoginBtnClicked}"
+                onLiveDataClick="@{viewModel.onLoginBtnClicked}"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/qb_px_44"
                 android:layout_alignParentTop="true"
