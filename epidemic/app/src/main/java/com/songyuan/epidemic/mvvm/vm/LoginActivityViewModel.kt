@@ -30,6 +30,8 @@ class LoginActivityViewModel(val activity: LoginActivity) : MvvmBaseViewModel() 
         val liveData = getLiveData<LoginInfo>()
 
         RxHttp.postForm("login")
+            .add("phone", name.get())
+            .add("password", pass.get())
             .asBaseResponse(LoginInfo::class.java)
             .lifeOnMain(this)
             .subscribe(LiveDataObserver(liveData))
