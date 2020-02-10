@@ -1,32 +1,31 @@
 package com.songyuan.epidemic.net;
 
 public class BaseResponse<T> {
-    private int code;
-    private String msg;
-    private T data;
+    private int errorCode;
+    private String message;
+    private T attachment;
 
-
-    public int getCode() {
-        return code;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public T getData() {
-        return data;
+    public T getAttachment() {
+        return attachment;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public void setAttachment(T attachment) {
+        this.attachment = attachment;
     }
 }

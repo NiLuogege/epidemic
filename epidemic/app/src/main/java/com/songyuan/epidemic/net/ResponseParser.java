@@ -27,9 +27,9 @@ public class ResponseParser<T> extends AbstractParser<T> {
     public T onParse(okhttp3.Response response) throws IOException {
         final Type type = ParameterizedTypeImpl.get(BaseResponse.class, mType); //获取泛型类型
         BaseResponse<T> data = convert(response, type);
-        T t = data.getData(); //获取data字段
-        if (data.getCode() != 0 || t == null) {//这里假设code不等于0，代表数据不正确，抛出异常
-            throw new ParseException(String.valueOf(data.getCode()), data.getMsg(), response);
+        T t = data.getAttachment(); //获取data字段
+        if (data.getErrorCode() != 200 || t == null) {//这里假设code不等于0，代表数据不正确，抛出异常
+            throw new ParseException(String.valueOf(data.getErrorCode()), data.getMessage(), response);
         }
         return t;
     }
