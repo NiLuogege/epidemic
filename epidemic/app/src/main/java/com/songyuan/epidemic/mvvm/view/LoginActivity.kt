@@ -35,4 +35,5 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
     override fun bindViewModels(binding: ActivityLoginBinding) {
         binding.viewModel = viewModel
     }
+
 }

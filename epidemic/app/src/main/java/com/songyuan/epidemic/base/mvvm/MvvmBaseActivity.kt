@@ -11,6 +11,7 @@ import com.songyuan.epidemic.base.mvvm.RequestState
 import com.songyuan.epidemic.base.mvvm.viewmodel.TitleLayoutViewModel
 import com.songyuan.epidemic.utils.LogUtil
 import com.songyuan.epidemic.BR
+import com.songyuan.epidemic.base.BaseActivity
 
 
 /**
@@ -18,7 +19,7 @@ import com.songyuan.epidemic.BR
  *
  * mvvm 架构 activity 的父类
  */
-abstract class MvvmBaseActivity<V : ViewDataBinding> : AppCompatActivity() {
+abstract class MvvmBaseActivity<V : ViewDataBinding> : BaseActivity() {
 
     protected lateinit var binding: V
 
