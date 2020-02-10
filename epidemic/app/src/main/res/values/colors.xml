@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FF5544</color>
+    <color name="colorPrimary">#FF5544</color>
+    <color name="colorPrimaryDark">#FF5544</color>
+    <color name="colorAccent_translation">#80FF5544</color>
+    <color name="colorAccent_translation2">#0DFF5544</color>
+    <color name="colorAccent_translation3">#33FF5544</color>
+
+    <color name="app_top_color">#222222</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="mask_fg_color">#33000000</color>
+    <color name="common_cancel_btn">#AAAAAA</color>
+    <color name="common_ok_btn">#00AA99</color>
+    <color name="common_divider">#EEEEEE</color>
+    <color name="common_bg">#F8F8F8</color>
+    <color name="common_default_text">#333333</color>
+    <color name="common_hint_text">#777777</color>
+    <color name="divider">#EEEEEE</color>
+    <color name="primary_text">#222222</color>
+
+
+    <!--  字体 -->
+    <color name="text_black">#000000</color>
+    <color name="text_default">#666666</color>
+    <color name="text_default_2">#333333</color>
+    <color name="text_default_3">#FF222222</color>
+    <color name="text_hint">#CCCCCC</color>
+    <color name="text_hint_2">#999999</color>
+    <color name="text_hint_3">#919191</color>
+    <color name="text_hint_4">#AAAAAA</color>
+    <color name="text_stepview">#ffffff</color>
+    <color name="text_status_name">#3F3F3F</color>
+    <color name="text_yellow">#FF8D2F</color>
+    <color name="text_yellow_2">#CB9A04</color>
+    <color name="text_yellow_3">#FACD2F</color>
+    <color name="text_yellow_4">#816108</color>
+    <color name="text_yellow_5">#B49D5E</color>
+    <color name="text_green">#FF00A699</color>
+    <color name="text_green_2">#FF24CB92</color>
+    <color name="text_green_3">#2CB5A9</color>
+    <color name="text_green_4">#73861C</color>
+    <color name="text_green_5">#D5F0EE</color>
+    <color name="text_blue">#FF7EA0FF</color>
+    <color name="text_icon_1">#979797</color>
+    <color name="text_home_icon">#BBBBBB</color>
+    <color name="text_red_1">#FF4B2D</color>
+    <color name="text_red_2">#FE5649</color>
+    <color name="text_common_1">#B3ffffff</color>
+    <color name="text_common_2">#99333333</color>
+    <color name="text_common_3">#9B9B9B</color>
+    <color name="text_common_4">#151515</color>
+    <color name="text_origin">#FF8B30</color>
+
+    <!-- 背景 -->
+    <color name="bg_default">#f8f8f8</color>
+    <color name="bg_wave_slide_bar">#cc666666</color>
+    <color name="bg_edittext">#666666</color>
+    <color name="bg_clickable_false">#D3D3D3</color>
+    <color name="bg_yellow">#FFF1B0</color>
+    <color name="bg_yellow2">#FFAF0E</color>
+    <color name="bg_red">#F97164</color>
+    <color name="preview_mock">#9a000000</color>
+    <color name="bg_green">#D9F3F0</color>
+    <color name="bg_btn_disable">#99ffffff</color>
+    <color name="bg_btn_disable2">#FFBBB4</color>
+    <color name="bg_btn_disable3">#99F8F8F8</color>
+    <color name="bg_1">#FF9699AE</color>
+    <color name="bg_2">#FFDDDA</color>
+    <color name="bg_3">#99000000</color>
+    <color name="bg_4">#F6F7F9</color>
+    <color name="bg_5">#FF7A30</color>
+    <color name="bg_6">#29BBAA</color>
+    <color name="bg_7">#EDEDED</color>
+
+    <!-- 其它 -->
+    <color name="DDDDDD">#DDDDDD</color>
+    <color name="line">#EEEEEE</color>
+    <color name="line_yellow">#FF8800</color>
+    <color name="line_1">#FFD8AB</color>
 </resources>

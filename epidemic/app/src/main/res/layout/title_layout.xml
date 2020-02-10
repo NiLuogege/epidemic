@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="titleViewModel"
+            type="com.songyuan.epidemic.base.mvvm.viewmodel.TitleLayoutViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qb_px_44"
+        android:background="@{titleViewModel.bgColor}">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                injectFontNew="@{@string/icon_arrow}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:onClick="@{titleViewModel.onBackImageClick}"
+                android:paddingLeft="@dimen/qb_px_10"
+                android:paddingRight="@dimen/qb_px_16"
+                android:textColor="@{titleViewModel.backArrowColor}"
+                android:textSize="@dimen/qb_px_20"
+                android:visibility="@{titleViewModel.showArrow_nomal}" />
+
+
+            <TextView
+                android:id="@+id/iv_back"
+                injectFontNew="@{@string/icon_arrow}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/qb_px_10"
+                android:paddingRight="@dimen/qb_px_16"
+                android:textColor="@{titleViewModel.backArrowColor}"
+                android:textSize="@dimen/qb_px_20"
+                android:visibility="@{titleViewModel.showArrow_id}" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{titleViewModel.titleObserver}"
+            android:textColor="@{titleViewModel.titleColor}"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:paddingLeft="@dimen/qb_px_15"
+            android:paddingRight="@dimen/qb_px_15"
+            android:text="@{titleViewModel.rightText}"
+            android:textColor="@color/text_default_2"
+            android:textSize="14sp"
+            android:visibility="@{titleViewModel.isShowRightText}" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_gravity="bottom"
+            android:background="@color/divider"
+            android:visibility="@{titleViewModel.isShowLine}" />
+
+    </FrameLayout>
+
+</layout>
+
