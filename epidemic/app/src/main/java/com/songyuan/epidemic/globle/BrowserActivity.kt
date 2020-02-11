@@ -188,8 +188,9 @@ class BrowserActivity : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun scanIdCord() {
-        rxPermissions?.requestEach(Manifest.permission.CAMERA)
+        rxPermissions?.requestEach(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE)
             ?.subscribe { permission ->
+                LogUtil.e("权限请求")
                 if (permission.granted) {
                     val intent = Intent(this@BrowserActivity, CameraActivity::class.java)
                     startActivityForResult(intent, 110)

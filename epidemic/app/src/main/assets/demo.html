@@ -21,6 +21,8 @@
     />
 </p>
 
+<img id="img" alt="上海鲜花港 - 郁金香" style="width: 50%;height: 50%"/>
+
 </body>
 <script>
 
@@ -32,7 +34,15 @@
                 , ""
                 , function(responseData) {
                     //回调处理
-                    document.getElementById("show").innerHTML = "send get responseData from java, data = " + responseData
+                    document.getElementById("show").innerHTML = "data = " + responseData
+
+
+                    alert(responseData);
+                    alert(responseData['headPath']);
+                    alert(responseData.headPath);
+
+                    var img=document.getElementById("img");
+                    img.src=responseData.headPath;
                 }
             );
         }
