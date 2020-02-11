@@ -194,13 +194,15 @@ class BrowserActivity : BaseActivity() {
             json["valid"] = idcard.valid?.value
             json["type"] = idcard.type?.value
             json["cover"] = idcard.cover?.value
+            json["headPath"] = "file://${idCardInfo.headPath}"
+            json["imgPath"] = "file://${idCardInfo.imgPath}"
 
-            val headBitmap: Bitmap? =
-                BitmapFactory.decodeStream(FileInputStream(idCardInfo.headPath))
-            json["headPath"] = Base64BitmapUtil.bitmapToBase64(headBitmap)
-            val imageBitmap: Bitmap? =
-                BitmapFactory.decodeStream(FileInputStream(idCardInfo.imgPath))
-            json["imgPath"] = Base64BitmapUtil.bitmapToBase64(imageBitmap)
+//            val headBitmap: Bitmap? =
+//                BitmapFactory.decodeStream(FileInputStream(idCardInfo.headPath))
+//            json["headPath"] = Base64BitmapUtil.bitmapToBase64(headBitmap)
+//            val imageBitmap: Bitmap? =
+//                BitmapFactory.decodeStream(FileInputStream(idCardInfo.imgPath))
+//            json["imgPath"] = Base64BitmapUtil.bitmapToBase64(imageBitmap)
 
         }
         scanIdCordFunction?.onCallBack(json.toJSONString())
