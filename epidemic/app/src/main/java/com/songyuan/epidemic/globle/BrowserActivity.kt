@@ -1,9 +1,12 @@
 package com.songyuan.epidemic.globle
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.util.Log
 import android.view.View
 import android.webkit.ValueCallback
@@ -15,6 +18,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.base.BaseActivity
 import com.songyuan.epidemic.utils.Routes
+import com.songyuan.epidemic.utils.ToastUtils
+import com.tbruyelle.rxpermissions2.RxPermissions
 import com.xianghuanji.jsbridge.BridgeHandler
 import com.xianghuanji.jsbridge.BridgeWebView
 import com.xianghuanji.jsbridge.CallBackFunction
@@ -39,10 +44,13 @@ class BrowserActivity : BaseActivity() {
 
     internal var mUploadMessage: ValueCallback<Uri>? = null
     internal var mUploadMessageArray: ValueCallback<Array<Uri>>? = null
+    var rxPermissions: RxPermissions? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_browser)
+
+        rxPermissions = RxPermissions(this)
 
         webView = findViewById(R.id.webView)
         progressbar = findViewById(R.id.progressbar)
@@ -52,6 +60,8 @@ class BrowserActivity : BaseActivity() {
         webView.webChromeClient = client
 
         webView.registerHandler("scanIdCord") { data, function ->
+            scanIdCord()
+
             function.onCallBack("submitFromWeb exe, response data 中文 from Java")
         }
 
@@ -133,5 +143,20 @@ class BrowserActivity : BaseActivity() {
             }
 
         }
+    }
+
+
+    @SuppressLint("CheckResult")
+    private fun scanIdCord() {
+        rxPermissions?.requestEach(Manifest.permission.CAMERA)
+            ?.subscribe { permission ->
+                if (permission.granted) {
+                    //                    LogUtil.e("商汤静默人脸识别获取拍照权限成功")
+
+
+                } else {
+                    ToastUtils.show("请开通相机权限，否则无法正常使用！")
+                }
+            }
     }
 }
