@@ -33,6 +33,7 @@ class BigQrActivity : MvvmBaseActivity<ActivityBigQrBinding>() {
     }
 
     override fun bindViewModels(binding: ActivityBigQrBinding) {
+        binding.viewModel=viewModel
     }
 
     override fun initView(savedInstanceState: Bundle?) {

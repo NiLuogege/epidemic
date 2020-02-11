@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mvvm.view.LoginActivity">
+        <activity android:name=".mvvm.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
 
 
         <activity
-            android:name=".mvvm.view.MainActivity"
+            android:name=".mvvm.view.LoginActivity"
             android:screenOrientation="portrait" />
 
         <activity
