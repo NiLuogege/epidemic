@@ -4,7 +4,9 @@ import android.view.View
 import androidx.databinding.ObservableField
 import com.aihuishou.commonlib.base.mvvm.MvvmBaseViewModel
 import com.songyuan.epidemic.base.mvvm.databanding.command.BindingCommand
+import com.songyuan.epidemic.utils.ArouterUtils
 import com.songyuan.epidemic.utils.LogUtil
+import com.songyuan.epidemic.utils.Routes
 import com.songyuan.epidemic.utils.ToastUtils
 import com.songyuan.epidemic.utils.regex.RegexUtils
 import io.reactivex.functions.Consumer
@@ -24,5 +26,9 @@ class MainActivityViewModel : MvvmBaseViewModel() {
         } else {
             ToastUtils.show("身份证有误，请重新输入")
         }
+    })
+
+    val onQrClicked = BindingCommand<View>(Consumer {
+        ArouterUtils.routerTo(Routes.A_BIG_QR)
     })
 }

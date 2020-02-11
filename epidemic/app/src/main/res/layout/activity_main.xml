@@ -20,10 +20,11 @@
 
 
         <ImageView
+            imageUrl="@{viewModel.qrImage}"
+            onClickCommand1="@{viewModel.onQrClicked}"
             android:layout_width="@dimen/qb_px_50"
             android:layout_height="@dimen/qb_px_50"
             android:layout_gravity="right"
-            imageUrl="@{viewModel.qrImage}"
             android:layout_marginTop="@dimen/qb_px_15"
             tools:src="@mipmap/ic_launcher" />
 

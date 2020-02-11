@@ -8,4 +8,5 @@ public class Routes {
 
     public static final String A_MAIN = group + "main";
     public static final String A_LOGIN = group + "login";
+    public static final String A_BIG_QR = group + "big_qr";
 }
