@@ -2,6 +2,8 @@
     package="com.niluogege.yunmaiocr">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
         <!--身份证识别 视频动态识别-->

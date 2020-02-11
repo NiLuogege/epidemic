@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -27,6 +28,8 @@ import com.yunmai.cc.idcard.controler.CameraManager;
 import com.yunmai.cc.idcard.controler.OcrConstant;
 import com.yunmai.cc.idcard.controler.OcrManager;
 import com.yunmai.cc.idcard.vo.IdCardInfo;
+
+import java.io.File;
 
 /**
  * Created by RuiFight-3 on 2018/7/23.
@@ -232,8 +235,8 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
                 case OcrConstant.RECOGN_OK:
                     mHandler.removeMessages(OcrConstant.TAKE_PREVIEW_DATA_OK);
                     mHandler.removeMessages(OcrConstant.START_AUTOFOCUS);
-                    String imgPath = "/sdcard/aidtest.jpg";
-                    String headPath = "/sdcard/aidheadtest.jpg";
+                    String imgPath = Environment.getExternalStorageDirectory() + File.separator + "aidtest.jpg";
+                    String headPath = Environment.getExternalStorageDirectory() + File.separator + "aidheadtest.jpg";
                     IdCardInfo idCardInfo = ocrManager.getResult(imgPath, headPath);
                     Intent data2 = new Intent();
                     data2.putExtra("idcardinfo", idCardInfo);

@@ -21,7 +21,7 @@
     />
 </p>
 
-<img id="img" alt="上海鲜花港 - 郁金香" style="width: 50%;height: 50%"/>
+<img id="img" alt="上海鲜花港 - 郁金香" style="width: 50%;height: 50%" src="file:\\storage\emulated\0\aidheadtest.jpg"/>
 
 </body>
 <script>
@@ -42,7 +42,7 @@
                     alert(json.headPath);
 
                     var img=document.getElementById("img");
-                    img.src=responseData.headPath;
+                    img.src=json.headPath;
                 }
             );
         }

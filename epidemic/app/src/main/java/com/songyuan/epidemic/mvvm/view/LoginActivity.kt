@@ -3,6 +3,7 @@ package com.songyuan.epidemic.mvvm.view
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -58,6 +59,13 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
             .requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             .subscribe {
             }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            rxPermissions
+                .requestEach(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .subscribe {
+                }
+        }
 
 
     }

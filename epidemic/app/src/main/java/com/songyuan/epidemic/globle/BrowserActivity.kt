@@ -4,13 +4,17 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.SyncStateContract
 import android.util.Log
 import android.view.View
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.widget.ProgressBar
 import com.alibaba.android.arouter.facade.annotation.Autowired
@@ -21,6 +25,7 @@ import com.niluogege.yunmaiocr.bean.Idcard
 import com.niluogege.yunmaiocr.idcard.CameraActivity
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.base.BaseActivity
+import com.songyuan.epidemic.utils.Base64BitmapUtil
 import com.songyuan.epidemic.utils.LogUtil
 import com.songyuan.epidemic.utils.Routes
 import com.songyuan.epidemic.utils.ToastUtils
@@ -31,6 +36,7 @@ import com.xianghuanji.jsbridge.CallBackFunction
 import com.xianghuanji.jsbridge.DefaultHandler
 import com.yunmai.cc.idcard.vo.IdCardInfo
 import java.io.File
+import java.io.FileInputStream
 import java.nio.charset.Charset
 
 /**
@@ -67,6 +73,16 @@ class BrowserActivity : BaseActivity() {
         progressbar?.isIndeterminate = false
 
         webView.webChromeClient = client
+
+
+        val webSettings = webView.settings
+        //允许webview对文件的操作
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            webSettings.allowUniversalAccessFromFileURLs = true
+            webSettings.allowFileAccessFromFileURLs = true
+        }
+        webSettings.allowFileAccess = true
+
 
         webView.registerHandler("scanIdCord") { data, function ->
             scanIdCord()
@@ -178,8 +194,13 @@ class BrowserActivity : BaseActivity() {
             json["valid"] = idcard.valid?.value
             json["type"] = idcard.type?.value
             json["cover"] = idcard.cover?.value
-            json["headPath"] = idCardInfo.headPath
-            json["imgPath"] = idCardInfo.imgPath
+
+            val headBitmap: Bitmap? =
+                BitmapFactory.decodeStream(FileInputStream(idCardInfo.headPath))
+            json["headPath"] = Base64BitmapUtil.bitmapToBase64(headBitmap)
+            val imageBitmap: Bitmap? =
+                BitmapFactory.decodeStream(FileInputStream(idCardInfo.imgPath))
+            json["imgPath"] = Base64BitmapUtil.bitmapToBase64(imageBitmap)
 
         }
         scanIdCordFunction?.onCallBack(json.toJSONString())
@@ -188,7 +209,18 @@ class BrowserActivity : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun scanIdCord() {
-        rxPermissions?.requestEach(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            rxPermissions
+                ?.requestEach(Manifest.permission.READ_EXTERNAL_STORAGE)
+                ?.subscribe {
+                }
+        }
+
+        rxPermissions?.requestEach(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
             ?.subscribe { permission ->
                 LogUtil.e("权限请求")
                 if (permission.granted) {
