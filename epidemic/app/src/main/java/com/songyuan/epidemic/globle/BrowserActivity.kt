@@ -51,7 +51,7 @@ class BrowserActivity : BaseActivity() {
 
         webView.webChromeClient = client
 
-        webView.registerHandler("submitFromWeb") { data, function ->
+        webView.registerHandler("scanIdCord") { data, function ->
             function.onCallBack("submitFromWeb exe, response data 中文 from Java")
         }
 
