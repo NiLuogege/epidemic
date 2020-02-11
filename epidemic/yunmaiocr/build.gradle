@@ -34,7 +34,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-
+    //orc jar包
     api files('libs/ccimg_20170424.jar')
     api files('libs/vidcard_20180109.jar')
+
+    implementation 'com.alibaba:fastjson:1.1.71.android'
 }

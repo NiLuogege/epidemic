@@ -15,9 +15,13 @@ import android.webkit.WebView
 import android.widget.ProgressBar
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.fastjson.JSON
+import com.alibaba.fastjson.JSONObject
+import com.niluogege.yunmaiocr.bean.Idcard
 import com.niluogege.yunmaiocr.idcard.CameraActivity
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.base.BaseActivity
+import com.songyuan.epidemic.utils.LogUtil
 import com.songyuan.epidemic.utils.Routes
 import com.songyuan.epidemic.utils.ToastUtils
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -25,6 +29,9 @@ import com.xianghuanji.jsbridge.BridgeHandler
 import com.xianghuanji.jsbridge.BridgeWebView
 import com.xianghuanji.jsbridge.CallBackFunction
 import com.xianghuanji.jsbridge.DefaultHandler
+import com.yunmai.cc.idcard.vo.IdCardInfo
+import java.io.File
+import java.nio.charset.Charset
 
 /**
  * Created by niluogege on 2020/2/11.
@@ -123,7 +130,7 @@ class BrowserActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         super.onActivityResult(requestCode, resultCode, intent)
-        if (requestCode == RESULT_CODE) {
+        if (requestCode == RESULT_CODE) {//选择文件
             if (null == mUploadMessage && null == mUploadMessageArray) {
                 return
             }
@@ -143,7 +150,21 @@ class BrowserActivity : BaseActivity() {
                 mUploadMessageArray = null
             }
 
+        } else if (resultCode == 200) {//身份证识别完毕
+            if (intent != null) {
+                val idCardInfo = intent.getSerializableExtra("idcardinfo") as IdCardInfo
+                pushIdCardInfo(idCardInfo)
+
+            }
+
         }
+    }
+
+    private fun pushIdCardInfo(idCardInfo: IdCardInfo) {
+        val cardStr = String(idCardInfo.charInfo, Charset.forName("gbk"))
+        val idcard = JSON.parseObject(cardStr, Idcard::class.java)
+
+        LogUtil.e("res= " + idcard.toString())
     }
 
 
