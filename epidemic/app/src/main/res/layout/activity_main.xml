@@ -1,18 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mvvm.view.MainActivity">
+<layout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <variable
+            name="viewModel"
+            type="com.songyuan.epidemic.mvvm.vm.MainActivityViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/qb_px_15"
+        android:layout_marginRight="@dimen/qb_px_15"
+        android:orientation="vertical"
+        tools:context=".mvvm.view.MainActivity">
+
+
+        <ImageView
+            android:layout_width="@dimen/qb_px_50"
+            android:layout_height="@dimen/qb_px_50"
+            android:layout_gravity="right"
+            imageUrl="@{viewModel.qrImage}"
+            android:layout_marginTop="@dimen/qb_px_15"
+            tools:src="@mipmap/ic_launcher" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qb_px_80"
+            android:text="请出入身份证"
+            android:textColor="@color/text_default"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_48"
+            android:layout_marginTop="@dimen/qb_px_10"
+            android:background="@drawable/rl_login_bg_shape"
+            android:gravity="center_vertical"
+            android:hint="请出入身份证"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/qb_px_8"
+            android:text="@={viewModel.idCard}"
+            android:textColor="@color/primary_text"
+            android:textColorHint="#B0B0B0"
+            android:textSize="14sp" />
+
+
+        <Button
+            android:id="@+id/login_btn_id"
+            style="?android:attr/borderlessButtonStyle"
+            onClickCommand1="@{viewModel.onOkBtnClicked}"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/qb_px_44"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/qb_px_12"
+            android:layout_marginTop="@dimen/qb_px_40"
+            android:layout_marginRight="@dimen/qb_px_12"
+            android:background="@drawable/bg_round_red_4"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+</layout>

@@ -10,9 +10,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.databinding.ActivityLoginBinding
 import com.songyuan.epidemic.mvvm.vm.LoginActivityViewModel
-import com.songyuan.epidemic.utils.LogUtil
-import com.songyuan.epidemic.utils.Routes
-import com.songyuan.epidemic.utils.UserUtil
+import com.songyuan.epidemic.utils.*
 
 /**
  * Created by niluogege on 2020/2/10.
@@ -43,6 +41,8 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
         viewModel.onLoginBtnClicked.observe(this@LoginActivity, Observer {
             handleData(viewModel.login()) {
                 UserUtil.setLoginInfo(it)
+                ArouterUtils.routerTo(Routes.A_MAIN)
+                finish()
             }
         })
 
