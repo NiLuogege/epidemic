@@ -126,8 +126,8 @@ abstract class MvvmBaseActivity<V : ViewDataBinding> : BaseActivity() {
                             showProgress()
                         }
                     result.isSuccess() -> {
-                        success(result.data!!)
                         dismissProgress()
+                        success(result.data!!)
                     }
                     result.isError() -> {
                         dismissProgress()
