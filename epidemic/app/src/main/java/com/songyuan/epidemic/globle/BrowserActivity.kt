@@ -53,6 +53,7 @@ class BrowserActivity : BaseActivity() {
     internal var mUploadMessage: ValueCallback<Uri>? = null
     internal var mUploadMessageArray: ValueCallback<Array<Uri>>? = null
     var rxPermissions: RxPermissions? = null
+    var scanIdCordFunction: CallBackFunction? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,8 +70,7 @@ class BrowserActivity : BaseActivity() {
 
         webView.registerHandler("scanIdCord") { data, function ->
             scanIdCord()
-
-            function.onCallBack("submitFromWeb exe, response data 中文 from Java")
+            scanIdCordFunction = function
         }
 
         webView.loadUrl(url)
@@ -153,7 +153,9 @@ class BrowserActivity : BaseActivity() {
         } else if (resultCode == 200) {//身份证识别完毕
             if (intent != null) {
                 val idCardInfo = intent.getSerializableExtra("idcardinfo") as IdCardInfo
-                pushIdCardInfo(idCardInfo)
+                if (idCardInfo != null) {
+                    pushIdCardInfo(idCardInfo)
+                }
 
             }
 
@@ -164,7 +166,23 @@ class BrowserActivity : BaseActivity() {
         val cardStr = String(idCardInfo.charInfo, Charset.forName("gbk"))
         val idcard = JSON.parseObject(cardStr, Idcard::class.java)
 
-        LogUtil.e("res= " + idcard.toString())
+        val json = JSONObject()
+        if (idcard != null) {
+            json["name"] = idcard.name?.value
+            json["sex"] = idcard.sex?.value
+            json["folk"] = idcard.folk?.value
+            json["birt"] = idcard.birt?.value
+            json["addr"] = idcard.addr?.value
+            json["num"] = idcard.num?.value
+            json["issue"] = idcard.issue?.value
+            json["valid"] = idcard.valid?.value
+            json["type"] = idcard.type?.value
+            json["cover"] = idcard.cover?.value
+            json["headPath"] = idCardInfo.headPath
+            json["imgPath"] = idCardInfo.imgPath
+
+        }
+        scanIdCordFunction?.onCallBack(json.toJSONString())
     }
 
 
