@@ -22,7 +22,10 @@ class MainActivityViewModel : MvvmBaseViewModel() {
 
     val onOkBtnClicked = BindingCommand<View>(Consumer {
         if (RegexUtils.isIDCard18(idCard.get())) {
-            LogUtil.e("fadsfafadf")
+            ArouterUtils.getRouter()
+                .build(Routes.A_BROWSER)
+                .withString("url", "file:///android_asset/demo.html")
+                .navigation()
         } else {
             ToastUtils.show("身份证有误，请重新输入")
         }

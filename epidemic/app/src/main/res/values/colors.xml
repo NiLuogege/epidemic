@@ -19,7 +19,7 @@
     <color name="common_hint_text">#777777</color>
     <color name="divider">#EEEEEE</color>
     <color name="primary_text">#222222</color>
-
+    <color name="viewpage_bkg_color">#fcc600</color>
 
     <!--  字体 -->
     <color name="text_black">#000000</color>
