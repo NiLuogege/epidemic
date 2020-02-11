@@ -1,2 +1,2 @@
-include ':app', ':jsbridge'
+include ':app', ':jsbridge', ':yunmaiocr'
 rootProject.name='epidemicManager'

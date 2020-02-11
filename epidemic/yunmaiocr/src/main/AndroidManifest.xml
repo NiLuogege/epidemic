@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.niluogege.yunmaiocr">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application>
+        <!--身份证识别 视频动态识别-->
+        <activity
+            android:name=".idcard.CameraActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".idcard.ARecognize"
+            android:configChanges="orientation|keyboard|keyboardHidden" />
+    </application>
+</manifest>

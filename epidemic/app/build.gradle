@@ -6,6 +6,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd")
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -14,7 +18,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -31,6 +35,56 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+
+    signingConfigs {
+        release {
+            storeFile file('doc/key.jks')
+            storePassword "111111"
+            keyAlias "app"
+            keyPassword "111111"
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            ndk {
+                abiFilters 'armeabi-v7a', 'x86'//支持架构
+            }
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            ndk {
+                abiFilters 'armeabi-v7a'//支持架构
+            }
+
+//            minifyEnabled true//开启混淆
+//            shrinkResources true //移除无用资源，想要自定义的话 需要在res/raw/keep.xml中配置
+//            zipAlignEnabled true //Zipalign优化
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release//签名文件
+            debuggable false
+            jniDebuggable false
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk') && 'release'.equals(variant.buildType.name)) {
+                        def fileName = "epidemic_V${defaultConfig.versionName}_${releaseTime()}.apk"
+                        outputFileName = fileName
+                    }
+                }
+            }
+            zipAlignEnabled true
+        }
     }
 }
 
@@ -88,6 +142,9 @@ dependencies {
 
     // jsbridge
     implementation project(':jsbridge')
+
+    //ocr
+    implementation project(':yunmaiocr')
 
     //rxpermissions
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'

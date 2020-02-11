@@ -15,6 +15,7 @@ import android.webkit.WebView
 import android.widget.ProgressBar
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.niluogege.yunmaiocr.idcard.CameraActivity
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.base.BaseActivity
 import com.songyuan.epidemic.utils.Routes
@@ -151,9 +152,9 @@ class BrowserActivity : BaseActivity() {
         rxPermissions?.requestEach(Manifest.permission.CAMERA)
             ?.subscribe { permission ->
                 if (permission.granted) {
-                    //                    LogUtil.e("商汤静默人脸识别获取拍照权限成功")
-
-
+                    val intent = Intent(this@BrowserActivity, CameraActivity::class.java)
+                    startActivityForResult(intent, 110)
+                    overridePendingTransition(R.anim.stop, R.anim.start)
                 } else {
                     ToastUtils.show("请开通相机权限，否则无法正常使用！")
                 }
