@@ -36,10 +36,10 @@
                     //回调处理
                     document.getElementById("show").innerHTML = "data = " + responseData
 
+                    var json=JSON.parse(responseData);
 
-                    alert(responseData);
-                    alert(responseData['headPath']);
-                    alert(responseData.headPath);
+
+                    alert(json.headPath);
 
                     var img=document.getElementById("img");
                     img.src=responseData.headPath;
