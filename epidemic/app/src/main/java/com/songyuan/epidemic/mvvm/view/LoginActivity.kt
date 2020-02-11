@@ -12,6 +12,7 @@ import com.songyuan.epidemic.databinding.ActivityLoginBinding
 import com.songyuan.epidemic.mvvm.vm.LoginActivityViewModel
 import com.songyuan.epidemic.utils.LogUtil
 import com.songyuan.epidemic.utils.Routes
+import com.songyuan.epidemic.utils.UserUtil
 
 /**
  * Created by niluogege on 2020/2/10.
@@ -41,7 +42,7 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
 
         viewModel.onLoginBtnClicked.observe(this@LoginActivity, Observer {
             handleData(viewModel.login()) {
-                LogUtil.e("aaaa= " + it.toString());
+                UserUtil.setLoginInfo(it)
             }
         })
 

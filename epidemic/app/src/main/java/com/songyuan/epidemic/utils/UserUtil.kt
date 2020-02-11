@@ -4,6 +4,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.songyuan.epidemic.App
+import com.songyuan.epidemic.mvvm.model.LoginInfo
 
 /**
  * Created by admin on 2017/2/9.
@@ -35,6 +36,11 @@ class UserUtil {
                     putString(USER_ID, value)
                 }
             }
+
+
+        fun setLoginInfo(info: LoginInfo) {
+            userId = info.cpId
+        }
 
 
         @JvmStatic
