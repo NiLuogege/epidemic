@@ -4,10 +4,7 @@ import android.view.View
 import androidx.databinding.ObservableField
 import com.aihuishou.commonlib.base.mvvm.MvvmBaseViewModel
 import com.songyuan.epidemic.base.mvvm.databanding.command.BindingCommand
-import com.songyuan.epidemic.utils.ArouterUtils
-import com.songyuan.epidemic.utils.LogUtil
-import com.songyuan.epidemic.utils.Routes
-import com.songyuan.epidemic.utils.ToastUtils
+import com.songyuan.epidemic.utils.*
 import com.songyuan.epidemic.utils.regex.RegexUtils
 import io.reactivex.functions.Consumer
 
@@ -25,7 +22,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
             ArouterUtils.getRouter()
                 .build(Routes.A_BROWSER)
 //                .withString("url", "file:///android_asset/demo.html")
-                .withString("url", "http://yqfk.bdcarlife.com/?csId=7")
+                .withString("url", "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=" + UserUtil.userId)
                 .withString("idCardNum", idCard.get())
                 .navigation()
         } else {

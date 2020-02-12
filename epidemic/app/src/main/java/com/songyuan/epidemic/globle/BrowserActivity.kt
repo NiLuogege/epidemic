@@ -73,7 +73,6 @@ class BrowserActivity : BaseActivity() {
         progressbar?.isIndeterminate = false
 
         webView.webChromeClient = client
-        webView.webViewClient=webviewChient
 
 
         val webSettings = webView.settings
@@ -112,17 +111,6 @@ class BrowserActivity : BaseActivity() {
 
             setCookie(uri.host, WebViewUtils.ORIGIN_IDCARD_NUM, idCardNum, this)
         }
-    }
-
-    private val webviewChient = object : WebViewClient() {
-
-        override fun shouldOverrideUrlLoading(
-            view: WebView?,
-            request: WebResourceRequest?
-        ): Boolean {
-            return true
-        }
-
     }
 
 
