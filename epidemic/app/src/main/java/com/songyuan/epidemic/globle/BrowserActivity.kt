@@ -12,10 +12,7 @@ import android.os.Bundle
 import android.provider.SyncStateContract
 import android.util.Log
 import android.view.View
-import android.webkit.ValueCallback
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
+import android.webkit.*
 import android.widget.ProgressBar
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -76,6 +73,7 @@ class BrowserActivity : BaseActivity() {
         progressbar?.isIndeterminate = false
 
         webView.webChromeClient = client
+        webView.webViewClient=webviewChient
 
 
         val webSettings = webView.settings
@@ -114,6 +112,17 @@ class BrowserActivity : BaseActivity() {
 
             setCookie(uri.host, WebViewUtils.ORIGIN_IDCARD_NUM, idCardNum, this)
         }
+    }
+
+    private val webviewChient = object : WebViewClient() {
+
+        override fun shouldOverrideUrlLoading(
+            view: WebView?,
+            request: WebResourceRequest?
+        ): Boolean {
+            return true
+        }
+
     }
 
 
