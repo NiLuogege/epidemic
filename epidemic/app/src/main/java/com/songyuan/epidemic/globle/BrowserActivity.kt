@@ -26,10 +26,7 @@ import com.songyuan.epidemic.base.BaseActivity
 import com.songyuan.epidemic.utils.*
 import com.songyuan.epidemic.utils.WebViewUtils.setCookie
 import com.tbruyelle.rxpermissions2.RxPermissions
-import com.xianghuanji.jsbridge.BridgeHandler
-import com.xianghuanji.jsbridge.BridgeWebView
-import com.xianghuanji.jsbridge.CallBackFunction
-import com.xianghuanji.jsbridge.DefaultHandler
+import com.xianghuanji.jsbridge.*
 import com.yunmai.cc.idcard.vo.IdCardInfo
 import java.io.File
 import java.io.FileInputStream
@@ -223,8 +220,8 @@ class BrowserActivity : BaseActivity() {
             json["valid"] = idcard.valid?.value
             json["type"] = idcard.type?.value
             json["cover"] = idcard.cover?.value
-            json["headPath"] = "file://${idCardInfo.headPath}"
-            json["imgPath"] = "file://${idCardInfo.imgPath}"
+            json["headPath"] = BridgeWebViewClient.LOCAL_IMAGE_KEY + idCardInfo.headPath
+            json["imgPath"] = BridgeWebViewClient.LOCAL_IMAGE_KEY + idCardInfo.imgPath
             json["origin_idcard_num"] = idCardNum
         }
         scanIdCordFunction?.onCallBack(json.toJSONString())

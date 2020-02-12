@@ -2,10 +2,18 @@ package com.xianghuanji.jsbridge;
 
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.util.Log;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -13,6 +21,7 @@ import java.net.URLDecoder;
  * 如果要自定义WebViewClient必须要集成此类
  */
 public class BridgeWebViewClient extends WebViewClient {
+    public static final String LOCAL_IMAGE_KEY = "http://androidimg";
     private BridgeWebView webView;
 
     public BridgeWebViewClient(BridgeWebView webView) {
@@ -58,7 +67,7 @@ public class BridgeWebViewClient extends WebViewClient {
             } else {
                 return super.shouldOverrideUrlLoading(view, request);
             }
-        }else {
+        } else {
             return super.shouldOverrideUrlLoading(view, request);
         }
     }
@@ -83,5 +92,43 @@ public class BridgeWebViewClient extends WebViewClient {
             }
             webView.setStartupMessage(null);
         }
+    }
+
+    @Nullable
+    @Override
+    public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+        WebResourceResponse response = releaseImage(url);
+        if (response != null) return response;
+        return super.shouldInterceptRequest(view, url);
+    }
+
+    @Nullable
+    @Override
+    public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            String url = request.getUrl().toString();
+            WebResourceResponse response = releaseImage(url);
+            if (response != null) return response;
+        }
+
+        return super.shouldInterceptRequest(view, request);
+    }
+
+    private WebResourceResponse releaseImage(String url) {
+        if (url.contains(LOCAL_IMAGE_KEY)) {
+
+            String imgPath = url.replace(LOCAL_IMAGE_KEY, "");
+            try {
+                /*重新构造WebResourceResponse  将数据已流的方式传入*/
+                FileInputStream input = new FileInputStream(new File(imgPath.trim()));
+                /*返回WebResourceResponse*/
+                return new WebResourceResponse("image/jpg", "UTF-8", input);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+
+            }
+
+        }
+        return null;
     }
 }
