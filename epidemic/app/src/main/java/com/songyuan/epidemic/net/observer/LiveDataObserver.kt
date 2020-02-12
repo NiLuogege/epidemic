@@ -16,7 +16,7 @@ class LiveDataObserver<T>(var liveData: MutableLiveData<RequestState<T>>) : Defa
     override fun onFail(error: Throwable?) {
         liveData.value = RequestState.error(error)
         if (error != null)
-            Toast.makeText(App.context, error.localizedMessage, Toast.LENGTH_LONG).show()
+            Toast.makeText(App.context, error.message, Toast.LENGTH_LONG).show()
     }
 
 }

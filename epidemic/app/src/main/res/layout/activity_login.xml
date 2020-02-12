@@ -26,7 +26,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/qb_px_15"
             android:layout_marginRight="@dimen/qb_px_15"
-            android:layout_marginBottom="@dimen/qb_px_50"
+            android:layout_marginBottom="@dimen/qb_px_80"
             android:orientation="vertical">
 
             <LinearLayout
@@ -86,10 +86,10 @@
                 android:layout_marginLeft="@dimen/qb_px_22"
                 android:layout_marginTop="@dimen/qb_px_40"
                 android:layout_marginRight="@dimen/qb_px_22"
-                android:background="@drawable/bg_round_red_4"
+                android:background="@drawable/bg_round_write_4"
                 android:gravity="center"
                 android:text="登录"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorAccent"
                 android:textSize="16sp" />
 
         </LinearLayout>
