@@ -18,7 +18,7 @@ import rxhttp.wrapper.param.RxHttp
 /**
  * Created by niluogege on 2020/2/10.
  */
-class LoginActivityViewModel(val activity: LoginActivity) : MvvmBaseViewModel() {
+class LoginActivityViewModel() : MvvmBaseViewModel() {
 
 
     val name = ObservableField<String>("")

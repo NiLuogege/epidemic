@@ -8,5 +8,5 @@ import rxhttp.wrapper.annotation.DefaultDomain;
 public class Config {
 
     @DefaultDomain() //设置为默认域名
-    public static String baseUrl = "https://yqfk.bdcarlife.com/api/";
+    public static String baseUrl = "http://yqfk.bdcarlife.com/api/";
 }

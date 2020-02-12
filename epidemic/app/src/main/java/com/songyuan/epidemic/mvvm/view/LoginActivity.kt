@@ -27,7 +27,7 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
     private val viewModel by lazy {
         ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return LoginActivityViewModel(this@LoginActivity) as T
+                return LoginActivityViewModel() as T
             }
         }).get(LoginActivityViewModel::class.java)
     }
@@ -45,10 +45,20 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
     @SuppressLint("CheckResult")
     override fun initView(savedInstanceState: Bundle?) {
 
+        val name = SPUtil.get(SPUtil.EPIDEMIC_APP, Constants.SP_USER_NAME)
+        if (name != null)
+            viewModel.name.set(name as String)
+
+        val pass = SPUtil.get(SPUtil.EPIDEMIC_APP, Constants.SP_PASSWORD)
+        if (pass != null)
+            viewModel.pass.set(pass as String)
+
         viewModel.onLoginBtnClicked.observe(this@LoginActivity, Observer {
             handleData(viewModel.login()) {
                 UserUtil.setLoginInfo(it)
                 ArouterUtils.routerTo(Routes.A_MAIN)
+                SPUtil.save(SPUtil.EPIDEMIC_APP, Constants.SP_USER_NAME, viewModel.name.get())
+                SPUtil.save(SPUtil.EPIDEMIC_APP, Constants.SP_PASSWORD, viewModel.pass.get())
                 finish()
             }
         })
