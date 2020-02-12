@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">epidemicManager</string>
+    <string name="app_name">门神疫情</string>
 
     <!--箭头-->
     <string name="icon_arrow">&#xe68a;</string>
