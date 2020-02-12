@@ -23,12 +23,11 @@ import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import com.niluogege.yunmaiocr.bean.Idcard
 import com.niluogege.yunmaiocr.idcard.CameraActivity
+import com.songyuan.epidemic.BuildConfig
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.base.BaseActivity
-import com.songyuan.epidemic.utils.Base64BitmapUtil
-import com.songyuan.epidemic.utils.LogUtil
-import com.songyuan.epidemic.utils.Routes
-import com.songyuan.epidemic.utils.ToastUtils
+import com.songyuan.epidemic.utils.*
+import com.songyuan.epidemic.utils.WebViewUtils.setCookie
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.xianghuanji.jsbridge.BridgeHandler
 import com.xianghuanji.jsbridge.BridgeWebView
@@ -49,6 +48,10 @@ class BrowserActivity : BaseActivity() {
     @Autowired
     @JvmField
     var url: String? = ""
+
+    @Autowired
+    @JvmField
+    var idCardNum: String? = ""
 
 
     lateinit var webView: BridgeWebView
@@ -84,12 +87,33 @@ class BrowserActivity : BaseActivity() {
         webSettings.allowFileAccess = true
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && BuildConfig.DEBUG) {
+            WebView.setWebContentsDebuggingEnabled(true)
+        }
+
+        initCookie(Uri.parse(url))
+
+
         webView.registerHandler("scanIdCord") { data, function ->
             scanIdCord()
             scanIdCordFunction = function
         }
 
         webView.loadUrl(url)
+    }
+
+    private fun initCookie(uri: Uri?) {
+        if (uri != null) {
+            if (UserUtil.isUserLogin()) {
+                LogUtil.d("用户登陆")
+                WebViewUtils.setLoginCookie(uri.host, this)
+            } else {
+                LogUtil.d("用户没登陆")
+                WebViewUtils.cleanLoginCookie(uri.host, this)
+            }
+
+            setCookie(uri.host, WebViewUtils.ORIGIN_IDCARD_NUM, idCardNum, this)
+        }
     }
 
 
@@ -196,6 +220,7 @@ class BrowserActivity : BaseActivity() {
             json["cover"] = idcard.cover?.value
             json["headPath"] = "file://${idCardInfo.headPath}"
             json["imgPath"] = "file://${idCardInfo.imgPath}"
+            json["origin_idcard_num"] = idCardNum
         }
         scanIdCordFunction?.onCallBack(json.toJSONString())
     }

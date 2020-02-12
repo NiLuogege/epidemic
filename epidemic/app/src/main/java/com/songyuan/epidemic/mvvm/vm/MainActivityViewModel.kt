@@ -26,6 +26,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                 .build(Routes.A_BROWSER)
 //                .withString("url", "file:///android_asset/demo.html")
                 .withString("url", "http://yqfk.bdcarlife.com/?csId=7")
+                .withString("idCardNum", idCard.get())
                 .navigation()
         } else {
             ToastUtils.show("身份证有误，请重新输入")
