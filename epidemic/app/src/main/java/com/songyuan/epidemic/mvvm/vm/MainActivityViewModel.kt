@@ -22,6 +22,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
             ArouterUtils.getRouter()
                 .build(Routes.A_BROWSER)
 //                .withString("url", "file:///android_asset/demo.html")
+//                .withString("url", "https://www.baidu.com/")
                 .withString("url", "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=" + UserUtil.userId)
                 .withString("idCardNum", idCard.get())
                 .navigation()

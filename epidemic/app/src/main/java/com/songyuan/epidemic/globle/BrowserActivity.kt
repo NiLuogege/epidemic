@@ -99,6 +99,14 @@ class BrowserActivity : BaseActivity() {
         webView.loadUrl(url)
     }
 
+    override fun onBackPressed() {
+        if (webView != null && webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     private fun initCookie(uri: Uri?) {
         if (uri != null) {
             if (UserUtil.isUserLogin()) {
