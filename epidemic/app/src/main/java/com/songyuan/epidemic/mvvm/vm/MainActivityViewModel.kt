@@ -24,7 +24,8 @@ class MainActivityViewModel : MvvmBaseViewModel() {
         if (RegexUtils.isIDCard18(idCard.get())) {
             ArouterUtils.getRouter()
                 .build(Routes.A_BROWSER)
-                .withString("url", "file:///android_asset/demo.html")
+//                .withString("url", "file:///android_asset/demo.html")
+                .withString("url", "http://yqfk.bdcarlife.com/?csId=7")
                 .navigation()
         } else {
             ToastUtils.show("身份证有误，请重新输入")
