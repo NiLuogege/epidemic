@@ -39,7 +39,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                                 .build(Routes.A_BROWSER)
                                 .withString(
                                     "url",
-                                    "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&status=${data.status}"
+                                    "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"
                                 )
                                 .withString("idCardNum", idCard.get())
                                 .navigation()

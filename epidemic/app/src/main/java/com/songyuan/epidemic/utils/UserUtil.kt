@@ -14,6 +14,7 @@ class UserUtil {
     companion object {
         private const val PREF_NAME = SPUtil.EPIDEMIC_APP
         private val USER_ID = "user_id"
+        private val CS_ID = "cs_id"
         private val QR_URL = "qr_url"
         private val sp: SharedPreferences
                 by lazy {
@@ -49,9 +50,20 @@ class UserUtil {
                 }
             }
 
+        var csId: String?
+            get() {
+                return sp.getString(CS_ID, "")
+            }
+            set(value) {
+                sp.edit {
+                    putString(CS_ID, value)
+                }
+            }
+
 
         fun setLoginInfo(info: LoginInfo) {
             userId = info.cpId
+            csId = info.csId
             qrUrl = info.csURL
         }
 
