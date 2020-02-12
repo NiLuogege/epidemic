@@ -89,6 +89,7 @@ class BrowserActivity : BaseActivity() {
 
 
         webView.registerHandler("scanIdCord") { data, function ->
+            LogUtil.e("调用相机")
             scanIdCord()
             scanIdCordFunction = function
         }
@@ -238,13 +239,13 @@ class BrowserActivity : BaseActivity() {
                 }
         }
 
-        rxPermissions?.requestEach(
+        rxPermissions?.request(
             Manifest.permission.CAMERA,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
-            ?.subscribe { permission ->
+            ?.subscribe { granted ->
                 LogUtil.e("权限请求")
-                if (permission.granted) {
+                if (granted) {
                     val intent = Intent(this@BrowserActivity, CameraActivity::class.java)
                     startActivityForResult(intent, 110)
                     overridePendingTransition(R.anim.stop, R.anim.start)
