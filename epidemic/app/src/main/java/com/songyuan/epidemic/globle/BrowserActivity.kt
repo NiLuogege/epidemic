@@ -95,6 +95,8 @@ class BrowserActivity : BaseActivity() {
         }
 
         webView.loadUrl(url)
+
+        LogUtil.e("url=${url}")
     }
 
     override fun onBackPressed() {
