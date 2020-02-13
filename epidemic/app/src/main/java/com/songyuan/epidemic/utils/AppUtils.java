@@ -13,10 +13,9 @@ import java.io.File;
 public class AppUtils {
 
     public static String getSDPath() {
-        boolean sdCardExist = Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED);
+        boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
         if (sdCardExist) {
-            return Environment.getExternalStorageDirectory().toString();
+            return Environment.getExternalStorageDirectory().getAbsolutePath();
         } else {
             return App.context.getCacheDir().getAbsolutePath();
         }
