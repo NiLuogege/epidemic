@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/qb_px_80"
-            android:text="请出入身份证"
+            android:text="请输出身份证"
             android:textColor="@color/text_default"
             android:textSize="30dp"
             android:textStyle="bold" />
