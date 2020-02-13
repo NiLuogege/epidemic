@@ -35,13 +35,17 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                 .subscribe(object : SimpleObserver<CheckIdCardInfo>() {
                     override fun onsuccess(data: CheckIdCardInfo?) {
                         if (data != null) {
+
+                            val url = if (data.status == "1") {
+                                "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"
+                            } else {
+                                "http://yqfk.bdcarlife.com/info/alreadyinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"
+                            }
+
                             ArouterUtils.getRouter()
                                 .build(Routes.A_BROWSER)
 //                                .withString("url", "file:///android_asset/demo.html")
-                                .withString(
-                                    "url",
-                                    "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"
-                                )
+                                .withString("url", url)
                                 .withString("idCardNum", idCard.get())
                                 .navigation()
                         }
