@@ -12,13 +12,13 @@ def releaseTime() {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "28.0.3"
     defaultConfig {
         applicationId "com.songyuan.epidemic"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.3"
+        versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
