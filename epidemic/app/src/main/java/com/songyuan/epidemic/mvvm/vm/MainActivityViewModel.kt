@@ -34,9 +34,9 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                         if (data != null) {
 
                             val url = if (data.status == "1") {
-                                "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"
+                                "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}"
                             } else {
-                                "http://yqfk.bdcarlife.com/info/alreadyinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"
+                                "http://yqfk.bdcarlife.com/info/alreadyinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}"
                             }
 
                             ArouterUtils.getRouter()

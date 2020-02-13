@@ -9,6 +9,7 @@ package com.songyuan.epidemic.mvvm.model
 class CheckIdCardInfo {
     var status: String = "" // 1、首次录入 2、 第二次录入
     var name: String = ""
+    var uid: String? = ""
 
 
 }
