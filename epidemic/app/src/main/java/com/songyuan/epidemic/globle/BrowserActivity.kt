@@ -95,7 +95,8 @@ class BrowserActivity : BaseActivity() {
         }
 
         webView.registerHandler("finish") { data, function ->
-           finish()
+            ToastUtils.show("录入成功")
+            finish()
         }
 
         webView.loadUrl(url)
