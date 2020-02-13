@@ -15,10 +15,7 @@ import com.songyuan.epidemic.R
 import com.songyuan.epidemic.databinding.ActivityBigQrBinding
 import com.songyuan.epidemic.mvvm.vm.BigQrActivityViewModel
 import com.songyuan.epidemic.mvvm.vm.MainActivityViewModel
-import com.songyuan.epidemic.utils.BitmapUtil
-import com.songyuan.epidemic.utils.Routes
-import com.songyuan.epidemic.utils.ToastUtils
-import com.songyuan.epidemic.utils.UserUtil
+import com.songyuan.epidemic.utils.*
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.functions.Action
 import io.reactivex.schedulers.Schedulers
@@ -63,6 +60,7 @@ class BigQrActivity : MvvmBaseActivity<ActivityBigQrBinding>() {
         ).subscribe { granted ->
             if (granted) {
 
+                LogUtil.e("保存图片")
 
                 Schedulers.newThread().createWorker().schedule {
                     val bitmap = Glide.with(this@BigQrActivity)
