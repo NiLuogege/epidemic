@@ -94,6 +94,10 @@ class BrowserActivity : BaseActivity() {
             scanIdCordFunction = function
         }
 
+        webView.registerHandler("finish") { data, function ->
+           finish()
+        }
+
         webView.loadUrl(url)
 
         LogUtil.e("url=${url}")

@@ -37,6 +37,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                         if (data != null) {
                             ArouterUtils.getRouter()
                                 .build(Routes.A_BROWSER)
+//                                .withString("url", "file:///android_asset/demo.html")
                                 .withString(
                                     "url",
                                     "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}"

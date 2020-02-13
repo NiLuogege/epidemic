@@ -17,7 +17,7 @@
 </p>
 
 <p>
-    <input type="button" value="识别身份证" onclick="testClick1();"
+    <input type="button" value="识别身份证" onclick="testClick2();"
     />
 </p>
 
@@ -46,6 +46,20 @@
                 }
             );
         }
+
+
+        function testClick2() {
+            //call native method
+            window.WebViewJavascriptBridge.callHandler(
+                'finish'
+                , ""
+                , function(responseData) {
+                    //回调处理
+
+                }
+            );
+        }
+
 
 
 
