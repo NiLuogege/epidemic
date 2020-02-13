@@ -54,7 +54,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
 
 
         } else {
-            ToastUtils.show("身份证有误，请重新输入")
+            ToastUtils.show("身份证有误，请重新输入!")
         }
     })
 
