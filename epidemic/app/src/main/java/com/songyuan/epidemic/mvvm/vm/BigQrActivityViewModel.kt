@@ -12,5 +12,7 @@ class BigQrActivityViewModel:MvvmBaseViewModel() {
 
     val qrImage = ObservableField<String>("")
 
+    val csName = ObservableField<String>("")
+
     val onLoginBtnClicked = MutableLiveData<View>()
 }

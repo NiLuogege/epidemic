@@ -10,6 +10,7 @@ class LoginInfo {
     var cpId: String = "" //录入人员唯一ID
     var csId: String = "" //所属采集点id
     var csURL: String = "" //采集点二维码
+    var csName: String = "" //采集点名称
     override fun toString(): String {
         return "LoginInfo(cpId='$cpId', csId='$csId', csURL='$csURL')"
     }

@@ -15,6 +15,7 @@ class UserUtil {
         private const val PREF_NAME = SPUtil.EPIDEMIC_APP
         private val USER_ID = "user_id"
         private val CS_ID = "cs_id"
+        private val CS_NAME = "cs_name"
         private val QR_URL = "qr_url"
         private val sp: SharedPreferences
                 by lazy {
@@ -60,10 +61,21 @@ class UserUtil {
                 }
             }
 
+        var csName: String?
+            get() {
+                return sp.getString(CS_NAME, "")
+            }
+            set(value) {
+                sp.edit {
+                    putString(CS_NAME, value)
+                }
+            }
+
 
         fun setLoginInfo(info: LoginInfo) {
             userId = info.cpId
             csId = info.csId
+            csName = info.csName
             qrUrl = info.csURL
         }
 

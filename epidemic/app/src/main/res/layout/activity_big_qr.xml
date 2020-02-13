@@ -20,13 +20,27 @@
             android:layout_centerInParent="true" />
 
         <ImageView
+            android:id="@+id/iv_qr"
             imageUrl="@{viewModel.qrImage}"
-            android:layout_width="@dimen/qb_px_200"
-            android:layout_height="@dimen/qb_px_200"
+            android:layout_width="@dimen/qb_px_250"
+            android:layout_height="@dimen/qb_px_250"
             android:layout_above="@id/center"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/qb_px_15"
             tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="@dimen/qb_px_250"
+            android:layout_height="@dimen/qb_px_250"
+            android:layout_below="@id/iv_qr"
+            android:text="@{viewModel.csName}"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/text_default"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginTop="@dimen/qb_px_20"
+            tools:text="采集地点：发简历发送到房价是打飞机胜多负少" />
 
 
         <Button
@@ -41,7 +55,7 @@
             android:layout_marginBottom="@dimen/qb_px_30"
             android:background="@drawable/bg_round_red_4"
             android:gravity="center"
-            android:text="确认"
+            android:text="保存"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
