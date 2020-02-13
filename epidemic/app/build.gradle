@@ -76,7 +76,7 @@ android {
 
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk') && 'release'.equals(variant.buildType.name)) {
-                        def fileName = "epidemic_V${defaultConfig.versionName}_${releaseTime()}.apk"
+                        def fileName = "menshen.apk"
                         outputFileName = fileName
                     }
                 }
