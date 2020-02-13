@@ -6,9 +6,6 @@ import com.aihuishou.commonlib.base.mvvm.MvvmBaseViewModel
 import com.rxjava.rxlife.lifeOnMain
 import com.songyuan.epidemic.base.mvvm.databanding.command.BindingCommand
 import com.songyuan.epidemic.mvvm.model.CheckIdCardInfo
-import com.songyuan.epidemic.mvvm.model.LoginInfo
-import com.songyuan.epidemic.net.observer.DefaultObserver
-import com.songyuan.epidemic.net.observer.LiveDataObserver
 import com.songyuan.epidemic.net.observer.SimpleObserver
 import com.songyuan.epidemic.utils.*
 import com.songyuan.epidemic.utils.regex.RegexUtils
@@ -20,16 +17,16 @@ import rxhttp.wrapper.param.RxHttp
  */
 class MainActivityViewModel : MvvmBaseViewModel() {
 
-    val idCard = ObservableField<String>("")
+    val phone = ObservableField<String>("")
     val qrImage = ObservableField<String>("")
 
 
     val onOkBtnClicked = BindingCommand<View>(Consumer {
-        if (RegexUtils.isIDCard18(idCard.get())) {
+        if (StringUtils.isNotEmpty(phone.get()) && phone.get()?.length == 11) {
 
 
-            RxHttp.get("find-by-id-card")
-                .add("IDCard", idCard.get())
+            RxHttp.get("find-by-phone")
+                .add("phone", phone.get())
                 .asBaseResponse(CheckIdCardInfo::class.java)
                 .lifeOnMain(this)
                 .subscribe(object : SimpleObserver<CheckIdCardInfo>() {
@@ -46,7 +43,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                                 .build(Routes.A_BROWSER)
 //                                .withString("url", "file:///android_asset/demo.html")
                                 .withString("url", url)
-                                .withString("idCardNum", idCard.get())
+                                .withString("idCardNum", phone.get())
                                 .navigation()
                         }
                     }
@@ -54,7 +51,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
 
 
         } else {
-            ToastUtils.show("身份证有误，请重新输入!")
+            ToastUtils.show("电话号码有误，请重新输入!")
         }
     })
 

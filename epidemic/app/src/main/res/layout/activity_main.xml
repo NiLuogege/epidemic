@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/qb_px_80"
-            android:text="请输出身份证"
+            android:text="请输入手机号"
             android:textColor="@color/text_default"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -46,11 +46,12 @@
             android:layout_marginTop="@dimen/qb_px_10"
             android:background="@drawable/rl_login_bg_shape"
             android:gravity="center_vertical"
-            android:hint="请出入身份证"
+            android:hint="请输入手机号"
+            android:inputType="phone"
             android:maxLength="18"
             android:paddingLeft="@dimen/qb_px_8"
             android:singleLine="true"
-            android:text="@={viewModel.idCard}"
+            android:text="@={viewModel.phone}"
             android:textColor="@color/primary_text"
             android:textColorHint="#B0B0B0"
             android:textSize="14sp" />
