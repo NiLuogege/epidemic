@@ -9,25 +9,39 @@
             type="com.songyuan.epidemic.mvvm.model.Address" />
     </data>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/qb_px_40"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@{item.csName}"
-            tools:text="发顺丰发顺丰" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qb_px_50"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:layout_width="@dimen/qb_px_20"
-            android:layout_height="@dimen/qb_px_20"
-            android:background="@drawable/selector_checkbox_choose"
-            android:button="@null"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{item.csName}"
+                android:textColor="@color/text_default"
+                android:textSize="16sp"
+                tools:text="发顺丰发顺丰" />
 
-    </LinearLayout>
+            <CheckBox
+                android:layout_width="@dimen/qb_px_18"
+                android:layout_height="@dimen/qb_px_18"
+                android:background="@drawable/selector_checkbox_choose"
+                android:button="@null"
+                android:checked="@{item.selected}" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/line"
+            android:layout_gravity="bottom"
+            android:layout_height="1px"/>
+    </FrameLayout>
 
 </layout>

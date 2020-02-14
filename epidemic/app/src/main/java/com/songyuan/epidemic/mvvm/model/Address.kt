@@ -7,7 +7,13 @@ package com.songyuan.epidemic.mvvm.model
  *
  */
 class Address {
-    var csId: String = "" //所属采集点id
-    var csURL: String = "" //采集点二维码
-    var csName: String = "" //采集点名称
+    var csId: String? = "" //所属采集点id
+    var csURL: String? = "" //采集点二维码
+    var csName: String? = "" //采集点名称
+    var selected: Boolean = false //是否被选中
+    override fun toString(): String {
+        return "Address(csId='$csId', csURL='$csURL', csName='$csName')"
+    }
+
+
 }
