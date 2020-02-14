@@ -10,6 +10,11 @@ def releaseTime() {
     return new Date().format("yyyy-MM-dd")
 }
 
+def buildTime() {
+    return new Date().format("yyyy-MM-dd HH:mm:ss")
+}
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "28.0.3"
@@ -80,7 +85,7 @@ android {
 
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk') && 'release'.equals(variant.buildType.name)) {
-                        def fileName = "menshen.apk"
+                        def fileName = "menshen_${releaseTime()}.apk"
                         outputFileName = fileName
                     }
                 }
