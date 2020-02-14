@@ -151,5 +151,7 @@ dependencies {
     //rxpermissions
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
 
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11'
+
 
 }

@@ -3,4 +3,8 @@
 
     <!--箭头-->
     <string name="icon_arrow">&#xe68a;</string>
+
+
+    <!--id -->
+    <item name="binding" type="id" />
 </resources>
