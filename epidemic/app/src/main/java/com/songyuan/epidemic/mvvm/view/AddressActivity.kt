@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -18,13 +19,16 @@ import com.songyuan.epidemic.base.mvvm.adapter.BaseDatabindingQuickAdapter
 import com.songyuan.epidemic.databinding.ActivityAddressBinding
 import com.songyuan.epidemic.mvvm.model.Address
 import com.songyuan.epidemic.mvvm.vm.AddressActivityViewModel
+import com.songyuan.epidemic.utils.ArouterUtils
 import com.songyuan.epidemic.utils.Routes
+import com.songyuan.epidemic.utils.UserUtil
 
 /**
  * Created by niluogege on 2020/2/14.
  */
 @Route(path = Routes.A_ADDRESS)
 class AddressActivity : MvvmBaseActivity<ActivityAddressBinding>() {
+    lateinit var quickAdapter: BaseDatabindingQuickAdapter<Address>
 
     private val viewModel by lazy {
         ViewModelProviders.of(this, object : ViewModelProvider.Factory {
@@ -43,10 +47,25 @@ class AddressActivity : MvvmBaseActivity<ActivityAddressBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        initRv()
+        viewModel.onOkBtnClick.observe(this, Observer {
+            val data = quickAdapter.data
+            for (address in data) {
+                if (address.selected) {
+                    UserUtil.setAddress(address)
+                    break
+                }
+            }
+
+            ArouterUtils.routerTo(Routes.A_MAIN)
+        })
+
+    }
+
+    fun initRv() {
         binding.rv.layoutManager = LinearLayoutManager(this)
 
-
-        val quickAdapter =
+        quickAdapter =
             object :
                 BaseDatabindingQuickAdapter<Address>(R.layout.item_address, ArrayList()) {}.apply {
                 setOnItemClickListener { adapter, view, position ->
@@ -71,7 +90,6 @@ class AddressActivity : MvvmBaseActivity<ActivityAddressBinding>() {
         handleData(viewModel.getAddress()) {
             quickAdapter.setNewData(it as MutableList<Address>)
         }
-
     }
 
 
