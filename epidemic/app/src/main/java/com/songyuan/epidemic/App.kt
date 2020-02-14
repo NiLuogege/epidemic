@@ -3,6 +3,7 @@ package com.songyuan.epidemic
 import android.app.Application
 import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
+import com.songyuan.epidemic.net.Config
 import com.songyuan.epidemic.net.RxHttpManager
 
 /**
@@ -18,9 +19,15 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         context = this
-        RxHttpManager.init(this)
+
+        initRxHttp()
 
         initARouter()
+    }
+
+    private fun initRxHttp() {
+        Config.setBaseUrl()
+        RxHttpManager.init(this)
     }
 
 

@@ -20,6 +20,10 @@ android {
         versionCode 1
         versionName "1.0.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        //环境配置     1:生成环境;  2: dev环境;
+        buildConfigField 'int', 'environment', '1'
     }
 
     configurations {
