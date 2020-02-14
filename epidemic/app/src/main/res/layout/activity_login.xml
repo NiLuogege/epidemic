@@ -26,7 +26,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/qb_px_15"
             android:layout_marginRight="@dimen/qb_px_15"
-            android:layout_marginBottom="@dimen/qb_px_80"
+            android:layout_marginBottom="@dimen/qb_px_10"
             android:orientation="vertical">
 
             <LinearLayout
@@ -92,6 +92,15 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp" />
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Powered by 汉博思创"
+                android:layout_marginTop="@dimen/qb_px_50"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
         </LinearLayout>
     </RelativeLayout>
 
