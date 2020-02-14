@@ -23,7 +23,7 @@ android {
 
 
         //环境配置     1:生成环境;  2: dev环境;
-        buildConfigField 'int', 'environment', '1'
+        buildConfigField 'int', 'environment', '2'
     }
 
     configurations {

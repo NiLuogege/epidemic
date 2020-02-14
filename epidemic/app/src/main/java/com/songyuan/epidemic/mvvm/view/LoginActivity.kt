@@ -56,7 +56,7 @@ class LoginActivity : MvvmBaseActivity<ActivityLoginBinding>() {
         viewModel.onLoginBtnClicked.observe(this@LoginActivity, Observer {
             handleData(viewModel.login()) {
                 UserUtil.setLoginInfo(it)
-                ArouterUtils.routerTo(Routes.A_MAIN)
+                ArouterUtils.routerTo(Routes.A_ADDRESS)
                 SPUtil.save(SPUtil.EPIDEMIC_APP, Constants.SP_USER_NAME, viewModel.name.get())
                 SPUtil.save(SPUtil.EPIDEMIC_APP, Constants.SP_PASSWORD, viewModel.pass.get())
                 finish()

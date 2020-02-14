@@ -4,6 +4,7 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.songyuan.epidemic.App
+import com.songyuan.epidemic.mvvm.model.Address
 import com.songyuan.epidemic.mvvm.model.LoginInfo
 
 /**
@@ -74,6 +75,9 @@ class UserUtil {
 
         fun setLoginInfo(info: LoginInfo) {
             userId = info.cpId
+        }
+
+        fun setAddress(info: Address) {
             csId = info.csId
             csName = info.csName
             qrUrl = info.csURL

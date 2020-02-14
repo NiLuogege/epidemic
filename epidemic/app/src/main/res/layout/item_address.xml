@@ -26,8 +26,7 @@
             android:layout_width="@dimen/qb_px_20"
             android:layout_height="@dimen/qb_px_20"
             android:background="@drawable/selector_checkbox_choose"
-            android:button="@null"
-            android:checked="@={viewModel.isAgreeMent}" />
+            android:button="@null"/>
 
     </LinearLayout>
 
