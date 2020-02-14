@@ -19,9 +19,28 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/login_btn_id"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/qb_px_44"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/qb_px_22"
+            android:layout_marginTop="@dimen/qb_px_40"
+            android:layout_marginRight="@dimen/qb_px_22"
+            android:layout_marginBottom="@dimen/qb_px_15"
+            android:background="@drawable/bg_round_red_4"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
 
     </LinearLayout>
 
