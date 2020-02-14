@@ -25,7 +25,7 @@ class AddressActivityViewModel : MvvmBaseViewModel() {
 
         RxHttp.get("find-cs-by-id")
             .add("cp_id", UserUtil.userId)
-            .asList(Address::class.java)
+            .asResponseList(Address::class.java)
             .lifeOnMain(this)
             .subscribe(LiveDataObserver(liveData))
 
