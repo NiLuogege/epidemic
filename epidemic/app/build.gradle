@@ -6,12 +6,9 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-def releaseTime() {
-    return new Date().format("yyyy-MM-dd")
-}
 
 def buildTime() {
-    return new Date().format("yyyy-MM-dd HH:mm:ss")
+    return new Date().getTime()
 }
 
 
@@ -84,8 +81,11 @@ android {
                 variant.outputs.all { output ->
 
                     def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk') && 'release'.equals(variant.buildType.name)) {
-                        def fileName = "menshen_${releaseTime()}.apk"
+                    if (outputFile != null && outputFile.name.endsWith('.apk') && 'release' == variant.buildType.name) {
+                        def fileName = "menshen_${variant.productFlavors[0].name}.apk"
+                        if('dev' == variant.productFlavors[0].name){
+                            fileName="menshen_${variant.productFlavors[0].name}_${buildTime()}.apk"
+                        }
                         outputFileName = fileName
                     }
                 }
