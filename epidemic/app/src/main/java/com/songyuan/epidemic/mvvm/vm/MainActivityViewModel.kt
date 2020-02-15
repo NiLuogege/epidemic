@@ -6,6 +6,7 @@ import com.aihuishou.commonlib.base.mvvm.MvvmBaseViewModel
 import com.rxjava.rxlife.lifeOnMain
 import com.songyuan.epidemic.base.mvvm.databanding.command.BindingCommand
 import com.songyuan.epidemic.mvvm.model.CheckIdCardInfo
+import com.songyuan.epidemic.net.Config
 import com.songyuan.epidemic.net.observer.SimpleObserver
 import com.songyuan.epidemic.utils.*
 import com.songyuan.epidemic.utils.regex.RegexUtils
@@ -34,9 +35,9 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                         if (data != null) {
 
                             val url = if (data.status == "1") {
-                                "http://yqfk.bdcarlife.com/info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}&csName=${UserUtil.csName}"
+                                "${Config.getBaseHost()}info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}&csName=${UserUtil.csName}"
                             } else {
-                                "http://yqfk.bdcarlife.com/info/alreadyinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}&csName=${UserUtil.csName}"
+                                "${Config.getBaseHost()}info/alreadyinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}&csName=${UserUtil.csName}"
                             }
 
                             ArouterUtils.getRouter()

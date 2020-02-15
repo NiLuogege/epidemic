@@ -17,6 +17,8 @@ public class Config {
 
     //生产环境
     private static final String BASE_URL_OFFICIAL = "http://yqfk.bdcarlife.com/api/";
+    //盐山生产环境
+    private static final String BASE_URL_YANSHAN = "http://yanshan.bdcarlife.com/api/";
     //开发环境
     private static final String BASE_URL_DEV = "http://dev.bdcarlife.com/api/";
 
@@ -25,9 +27,16 @@ public class Config {
             case 2://开发
                 BASE_URL = BASE_URL_DEV;
                 break;
+            case 3://开发
+                BASE_URL = BASE_URL_YANSHAN;
+                break;
             default://默认生产
                 BASE_URL = BASE_URL_OFFICIAL;
                 break;
         }
+    }
+
+    public static String getBaseHost() {
+        return BASE_URL.replace("api/", "");
     }
 }
