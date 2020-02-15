@@ -43,10 +43,6 @@ class BrowserActivity : BaseActivity() {
     @JvmField
     var url: String? = ""
 
-    @Autowired
-    @JvmField
-    var idCardNum: String? = ""
-
 
     lateinit var webView: BridgeWebView
     private var RESULT_CODE = 0
@@ -121,8 +117,6 @@ class BrowserActivity : BaseActivity() {
                 LogUtil.d("用户没登陆")
                 WebViewUtils.cleanLoginCookie(uri.host, this)
             }
-
-            setCookie(uri.host, WebViewUtils.ORIGIN_IDCARD_NUM, idCardNum, this)
         }
     }
 
@@ -230,7 +224,6 @@ class BrowserActivity : BaseActivity() {
             json["cover"] = idcard.cover?.value
             json["headPath"] = BridgeWebViewClient.LOCAL_IMAGE_KEY + idCardInfo.headPath
             json["imgPath"] = BridgeWebViewClient.LOCAL_IMAGE_KEY + idCardInfo.imgPath
-            json["origin_idcard_num"] = idCardNum
         }
         scanIdCordFunction?.onCallBack(json.toJSONString())
     }

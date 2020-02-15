@@ -34,10 +34,17 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                     override fun onsuccess(data: CheckIdCardInfo?) {
                         if (data != null) {
 
+                            val params = "cpId=${UserUtil.userId}" +
+                                    "&csId=${UserUtil.csId}" +
+                                    "&status=${data.status}" +
+                                    "&uid=${data.uid}" +
+                                    "&phone=${phone.get()}" +
+                                    "&csName=${UserUtil.csName}"
+
                             val url = if (data.status == "1") {
-                                "${Config.getBaseHost()}info/firstinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}&csName=${UserUtil.csName}"
+                                "${Config.getBaseHost()}info/firstinputforapp?${params}"
                             } else {
-                                "${Config.getBaseHost()}info/alreadyinputforapp?cpId=${UserUtil.userId}&csId=${UserUtil.csId}&status=${data.status}&uid=${data.uid}&csName=${UserUtil.csName}"
+                                "${Config.getBaseHost()}info/alreadyinputforapp${params}?"
                             }
 
                             ArouterUtils.getRouter()
