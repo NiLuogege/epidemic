@@ -44,7 +44,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                             val url = if (data.status == "1") {
                                 "${Config.getBaseHost()}info/firstinputforapp?${params}"
                             } else {
-                                "${Config.getBaseHost()}info/alreadyinputforapp${params}?"
+                                "${Config.getBaseHost()}info/alreadyinputforapp?${params}"
                             }
 
                             ArouterUtils.getRouter()
