@@ -27,7 +27,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
 
-        //环境配置     1:生成环境;  2: dev环境;
+        //环境配置     1:生成环境;  2: dev环境; ; 3: 盐山
         buildConfigField 'int', 'environment', '2'
     }
 
@@ -91,6 +91,26 @@ android {
                 }
             }
             zipAlignEnabled true
+        }
+    }
+
+    flavorDimensions "versionCode"
+
+    productFlavors {
+        //environment:     1:yqfk;  2: dev环境; ; 3: 盐山
+        dev {
+            dimension "versionCode"
+            buildConfigField 'int', 'environment', '2'
+        }
+
+        yqfk {
+            dimension "versionCode"
+            buildConfigField 'int', 'environment', '1'
+        }
+
+        yanshan {
+            dimension "versionCode"
+            buildConfigField 'int', 'environment', '3'
         }
     }
 }

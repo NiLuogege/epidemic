@@ -27,7 +27,7 @@ public class Config {
             case 2://开发
                 BASE_URL = BASE_URL_DEV;
                 break;
-            case 3://开发
+            case 3://盐山
                 BASE_URL = BASE_URL_YANSHAN;
                 break;
             default://默认生产
