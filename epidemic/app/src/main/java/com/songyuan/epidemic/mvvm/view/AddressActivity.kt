@@ -17,6 +17,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.songyuan.epidemic.R
 import com.songyuan.epidemic.base.mvvm.adapter.BaseDatabindingQuickAdapter
 import com.songyuan.epidemic.databinding.ActivityAddressBinding
+import com.songyuan.epidemic.mvvm.adapter.AddressAdapter
 import com.songyuan.epidemic.mvvm.model.Address
 import com.songyuan.epidemic.mvvm.vm.AddressActivityViewModel
 import com.songyuan.epidemic.utils.ArouterUtils
@@ -28,7 +29,7 @@ import com.songyuan.epidemic.utils.UserUtil
  */
 @Route(path = Routes.A_ADDRESS)
 class AddressActivity : MvvmBaseActivity<ActivityAddressBinding>() {
-    lateinit var quickAdapter: BaseDatabindingQuickAdapter<Address>
+    lateinit var quickAdapter: AddressAdapter
 
     private val viewModel by lazy {
         ViewModelProviders.of(this, object : ViewModelProvider.Factory {
@@ -66,25 +67,21 @@ class AddressActivity : MvvmBaseActivity<ActivityAddressBinding>() {
     fun initRv() {
         binding.rv.layoutManager = LinearLayoutManager(this)
 
-        quickAdapter =
-            object :
-                BaseDatabindingQuickAdapter<Address>(R.layout.item_address, ArrayList()) {}.apply {
-                setOnItemClickListener { adapter, view, position ->
-                    val addressList = adapter.data as List<Address>
-                    val address = addressList[position]
-                    if (address.selected) {
-                        address.selected = false
-                    } else {
-                        for (add in addressList) {
-                            add.selected = false
-                        }
-                        address.selected = true
+        quickAdapter = AddressAdapter(R.layout.item_address, ArrayList()).apply {
+            setOnItemClickListener { adapter, view, position ->
+                val addressList = adapter.data as List<Address>
+                val address = addressList[position]
+                if (address.selected) {
+                    address.selected = false
+                } else {
+                    for (add in addressList) {
+                        add.selected = false
                     }
-                    adapter.notifyDataSetChanged()
+                    address.selected = true
                 }
+                adapter.notifyDataSetChanged()
             }
-
-
+        }
 
         binding.rv.adapter = quickAdapter
 
