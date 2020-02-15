@@ -45,7 +45,7 @@ class BigQrActivity : MvvmBaseActivity<ActivityBigQrBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
         viewModel.run {
             qrImage.set(UserUtil.qrUrl)
-            csName.set("采集地点：${UserUtil.csName}")
+            csName.set("采集地点：\n${UserUtil.csName}")
             onLoginBtnClicked.observe(this@BigQrActivity, Observer {
                 saveImage()
             })
