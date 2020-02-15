@@ -94,22 +94,22 @@ android {
         }
     }
 
-    flavorDimensions "versionCode"
+    flavorDimensions "host"
 
     productFlavors {
         //environment:     1:yqfk;  2: dev环境; ; 3: 盐山
         dev {
-            dimension "versionCode"
+            dimension "host"
             buildConfigField 'int', 'environment', '2'
         }
 
         yqfk {
-            dimension "versionCode"
+            dimension "host"
             buildConfigField 'int', 'environment', '1'
         }
 
         yanshan {
-            dimension "versionCode"
+            dimension "host"
             buildConfigField 'int', 'environment', '3'
         }
     }
