@@ -1,6 +1,7 @@
 package com.songyuan.epidemic.net;
 
 import com.songyuan.epidemic.BuildConfig;
+import com.songyuan.epidemic.utils.LogUtil;
 
 import java.net.URL;
 
@@ -34,6 +35,8 @@ public class Config {
                 BASE_URL = BASE_URL_OFFICIAL;
                 break;
         }
+
+        LogUtil.e("BASE_URL= " + BASE_URL);
     }
 
     public static String getBaseHost() {
