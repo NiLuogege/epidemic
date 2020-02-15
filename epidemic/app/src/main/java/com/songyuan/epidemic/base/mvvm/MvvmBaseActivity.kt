@@ -28,7 +28,7 @@ abstract class MvvmBaseActivity<V : ViewDataBinding> : BaseActivity() {
     //loading是否可以点击返回键去掉
     protected var progressCancelable: Boolean = true
 
-    protected var useTitleViewModel = false//默认初始化 titleViewModel, 如果不适用titleviewModel需要置位false
+    protected var useTitleViewModel = true//默认初始化 titleViewModel, 如果不适用titleviewModel需要置位false
 
     protected lateinit var titleLayoutViewModel: TitleLayoutViewModel
 

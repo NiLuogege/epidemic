@@ -21,7 +21,7 @@ public class TitleLayoutViewModel extends BaseObservable {
     public ObservableField<String> titleObserver = new ObservableField<>();
     public ObservableInt titleColor = new ObservableInt(1);
     public ObservableField<String> rightText = new ObservableField<>("搜索");
-    public ObservableInt showArrow_nomal = new ObservableInt(View.VISIBLE);
+    public ObservableInt showArrow_nomal = new ObservableInt(View.GONE);
     public ObservableInt showArrow_id = new ObservableInt(View.GONE);
     public ObservableInt isShowRightText = new ObservableInt(View.GONE);
     public ObservableInt isShowLine = new ObservableInt(View.VISIBLE);

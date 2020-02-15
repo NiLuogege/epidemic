@@ -47,6 +47,7 @@ class AddressActivity : MvvmBaseActivity<ActivityAddressBinding>() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        setTitle("请选择采集点")
         initRv()
         viewModel.onOkBtnClick.observe(this, Observer {
             val data = quickAdapter.data

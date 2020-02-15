@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.songyuan.epidemic.mvvm.vm.AddressActivityViewModel" />
+
+        <variable
+            name="titleViewModel"
+            type="com.songyuan.epidemic.base.mvvm.viewmodel.TitleLayoutViewModel" />
 
     </data>
 
@@ -15,6 +20,11 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
+
+        <include
+            android:id="@+id/title"
+            layout="@layout/title_layout"
+            app:titleViewModel="@{titleViewModel}" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -36,7 +46,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/qb_px_22"
-            android:layout_marginTop="@dimen/qb_px_40"
+            android:layout_marginTop="@dimen/qb_px_10"
             android:layout_marginRight="@dimen/qb_px_22"
             android:layout_marginBottom="@dimen/qb_px_15"
             android:background="@drawable/bg_round_red_4"
