@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
@@ -101,5 +104,40 @@ public class BitmapUtil {
 
     }
 
+
+    /**
+     * 给一张Bitmap添加水印文字。
+     *
+     * @param src      源图片
+     * @param content  水印文本
+     * @param textSize 水印字体大小 ，单位pix。
+     * @param color    水印字体颜色。
+     * @param x        起始坐标x
+     * @param y        起始坐标y
+     * @param recycle  是否回收
+     * @return 已经添加水印后的Bitmap。
+     */
+    public static Bitmap addTextWatermark(Bitmap src, String content, int textSize, int color, float x, float y, boolean recycle) {
+        if (isEmptyBitmap(src) || content == null)
+            return null;
+        Bitmap ret = src.copy(src.getConfig(), true);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        Canvas canvas = new Canvas(ret);
+        paint.setColor(color);
+        paint.setTextSize(textSize);
+        Rect bounds = new Rect();
+        paint.getTextBounds(content, 0, content.length(), bounds);
+        canvas.drawText(content, x, y, paint);
+        if (recycle && !src.isRecycled())
+            src.recycle();
+        return ret;
+    }
+
+    /**
+     * Bitmap对象是否为空。
+     */
+    public static boolean isEmptyBitmap(Bitmap src) {
+        return src == null || src.getWidth() == 0 || src.getHeight() == 0;
+    }
 
 }

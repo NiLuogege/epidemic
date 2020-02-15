@@ -70,7 +70,16 @@ class BigQrActivity : MvvmBaseActivity<ActivityBigQrBinding>() {
                         .get()
 
                     if (bitmap != null) {
-                        // 在这里执行图片保存方法
+//                        // 在这里执行图片保存方法
+//                        val watermarkBitmap = BitmapUtil.addTextWatermark(
+//                            bitmap,
+//                            UserUtil.csName,
+//                            14,
+//                            resources.getColor(R.color.text_default),
+//                            20f,
+//                            18f,
+//                            true
+//                        )
                         BitmapUtil.saveImageToGallery(this@BigQrActivity, bitmap)
                         runOnUiThread {
                             ToastUtils.show("保存成功")
