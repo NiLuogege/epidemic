@@ -38,6 +38,7 @@ class MainActivityViewModel : MvvmBaseViewModel() {
                                     "&csId=${UserUtil.csId}" +
                                     "&status=${data.status}" +
                                     "&uid=${data.uid}" +
+                                    "&user_name=${data.name}" +
                                     "&phone=${phone.get()}" +
                                     "&csName=${UserUtil.csName}"
 
