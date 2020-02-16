@@ -112,6 +112,16 @@ android {
             dimension "host"
             buildConfigField 'int', 'environment', '3'
         }
+
+        yingtan {
+            dimension "host"
+            buildConfigField 'int', 'environment', '4'
+        }
+
+        quyang {
+            dimension "host"
+            buildConfigField 'int', 'environment', '5'
+        }
     }
 }
 
