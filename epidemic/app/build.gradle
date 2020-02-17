@@ -122,6 +122,11 @@ android {
             dimension "host"
             buildConfigField 'int', 'environment', '5'
         }
+
+        baihui {
+            dimension "host"
+            buildConfigField 'int', 'environment', '6'
+        }
     }
 }
 

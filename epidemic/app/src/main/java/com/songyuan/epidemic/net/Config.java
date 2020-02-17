@@ -26,6 +26,8 @@ public class Config {
     private static final String BASE_URL_YINGTAN = "http://yingtan.bdcarlife.com/api/";
     // quyang 生产环境
     private static final String BASE_URL_QUYANG = "http://quyang.bdcarlife.com/api/";
+    // baihui 生产环境
+    private static final String BASE_URL_BAIHUI = "http://baihui.bdcarlife.com/api/";
 
     public static void setBaseUrl() {
         switch (BuildConfig.environment) {
@@ -40,6 +42,9 @@ public class Config {
                 break;
             case 5://quyang
                 BASE_URL = BASE_URL_QUYANG;
+                break;
+            case 6://baihui
+                BASE_URL = BASE_URL_BAIHUI;
                 break;
             default://默认生产
                 BASE_URL = BASE_URL_OFFICIAL;
