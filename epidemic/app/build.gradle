@@ -79,14 +79,12 @@ android {
             jniDebuggable false
             applicationVariants.all { variant ->
                 variant.outputs.all { output ->
-
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk') && 'release' == variant.buildType.name) {
+                    if ('release' == variant.buildType.name) {
                         def fileName = "menshen_${variant.productFlavors[0].name}.apk"
                         if ('dev' == variant.productFlavors[0].name) {
                             fileName = "menshen_${variant.productFlavors[0].name}_${buildTime()}.apk"
                         }
-                        variant.getPackageApplication().outputDirectory = new File("${rootDir}/outapks/")
+                        variant.packageApplicationProvider.get().outputDirectory = new File("${rootDir}/outapks/")
                         outputFileName = fileName
                     }
                 }
