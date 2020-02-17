@@ -86,6 +86,7 @@ android {
                         if ('dev' == variant.productFlavors[0].name) {
                             fileName = "menshen_${variant.productFlavors[0].name}_${buildTime()}.apk"
                         }
+                        variant.getPackageApplication().outputDirectory = new File("${rootDir}/outapks/")
                         outputFileName = fileName
                     }
                 }
