@@ -24,8 +24,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
 
-        //环境配置     1:生成环境;  2: dev环境; ; 3: 盐山
-        buildConfigField 'int', 'environment', '2'
     }
 
     configurations {
@@ -62,6 +60,8 @@ android {
             shrinkResources false
 
             signingConfig signingConfigs.release
+
+            buildConfigField 'String', 'host', "\"dev\""
         }
 
         release {
@@ -83,8 +83,8 @@ android {
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk') && 'release' == variant.buildType.name) {
                         def fileName = "menshen_${variant.productFlavors[0].name}.apk"
-                        if('dev' == variant.productFlavors[0].name){
-                            fileName="menshen_${variant.productFlavors[0].name}_${buildTime()}.apk"
+                        if ('dev' == variant.productFlavors[0].name) {
+                            fileName = "menshen_${variant.productFlavors[0].name}_${buildTime()}.apk"
                         }
                         outputFileName = fileName
                     }
@@ -97,35 +97,34 @@ android {
     flavorDimensions "host"
 
     productFlavors {
-        //environment:     1:yqfk;  2: dev环境; ; 3: 盐山
         dev {
             dimension "host"
-            buildConfigField 'int', 'environment', '2'
+            buildConfigField 'String', 'host', "\"dev\""
         }
 
         yqfk {
             dimension "host"
-            buildConfigField 'int', 'environment', '1'
+            buildConfigField 'String', 'host', "\"yqfk\""
         }
 
         yanshan {
             dimension "host"
-            buildConfigField 'int', 'environment', '3'
+            buildConfigField 'String', 'host', "\"yanshan\""
         }
 
         yingtan {
             dimension "host"
-            buildConfigField 'int', 'environment', '4'
+            buildConfigField 'String', 'host', "\"yingtan\""
         }
 
         quyang {
             dimension "host"
-            buildConfigField 'int', 'environment', '5'
+            buildConfigField 'String', 'host', "\"quyang\""
         }
 
         baihui {
             dimension "host"
-            buildConfigField 'int', 'environment', '6'
+            buildConfigField 'String', 'host', "\"baihui\""
         }
     }
 }

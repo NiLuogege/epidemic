@@ -5,6 +5,7 @@ import android.content.Context
 import com.alibaba.android.arouter.launcher.ARouter
 import com.songyuan.epidemic.net.Config
 import com.songyuan.epidemic.net.RxHttpManager
+import com.songyuan.epidemic.utils.LogUtil
 
 /**
  * Created by niluogege on 2020/2/10.
@@ -26,7 +27,7 @@ class App : Application() {
     }
 
     private fun initRxHttp() {
-        Config.setBaseUrl()
+        LogUtil.e("BASE_URL= " + Config.BASE_URL)
         RxHttpManager.init(this)
     }
 
