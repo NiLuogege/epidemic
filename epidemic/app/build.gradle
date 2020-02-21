@@ -61,7 +61,7 @@ android {
 
             signingConfig signingConfigs.release
 
-            buildConfigField 'String', 'host', "\"dev\""
+            buildConfigField 'String', 'host', "\"dev.yanshan1\""
         }
 
         release {
@@ -98,7 +98,7 @@ android {
     productFlavors {
         dev {
             dimension "host"
-            buildConfigField 'String', 'host', "\"dev\""
+            buildConfigField 'String', 'host', "\"dev.yanshan1\""
         }
 
         yqfk {

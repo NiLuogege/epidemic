@@ -2,8 +2,11 @@ package com.songyuan.epidemic.net;
 
 
 import android.app.Application;
+import android.util.Log;
 
 import com.songyuan.epidemic.BuildConfig;
+import com.songyuan.epidemic.utils.StringUtils;
+import com.songyuan.epidemic.utils.UserUtil;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -75,6 +78,12 @@ public class RxHttpManager {
             } else if (method.isPost()) { //Post请求
 
             }
+
+            String userId = UserUtil.getUserId();
+            if (StringUtils.isNotEmpty(userId)&&p.getSimpleUrl().contains("/api/login")) {
+                p.add("cpId", userId);
+            }
+
             return p.add("versionName", "1.0.0")//添加公共参数
                     .add("time", System.currentTimeMillis())
                     .addHeader("deviceType", "android"); //添加公共请求头
